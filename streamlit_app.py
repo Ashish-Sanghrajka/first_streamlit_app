@@ -4,4 +4,6 @@ streamlit.header('Breakfast Menu')
 streamlit.text('Kale Salad , Beet, cole Slaw')
 streamlit.text('Orange Juice')
 
+streamlit.header('Build Your Own Smoothie')
+
 
