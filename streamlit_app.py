@@ -14,6 +14,7 @@ my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.co
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
 streamlit.dataframe(my_fruit_list)
+/*
 
 # Let's put a pick list here so they can pick the fruit they want to include 
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
@@ -69,3 +70,4 @@ add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 
 my_cur.execute("insert into fruit_load_list values ")
 insert into fruit_load_list values (add_my_fruit)
+*/
