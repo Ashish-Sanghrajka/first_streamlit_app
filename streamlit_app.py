@@ -22,6 +22,10 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
+# Do not Run Past Here - Trouble shooting 
+streamlit.stop()
+
+
 #import requests
 #This will Normalize and Flatten the JSON File  
 # This will display the data in a table
@@ -61,8 +65,6 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.dataframe(my_data_rows)
 
-# Do not Run Past Here - Trouble shooting 
-streamlit.stop()
 
 # Add Fruit 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
