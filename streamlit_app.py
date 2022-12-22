@@ -23,23 +23,31 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 import requests
 
+
+try:
 # Fruityvice API
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
-
-
-# API Call
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
-# streamlit.text(fruityvice_response)
-
-#
-streamlit.header("Fruityvice Fruit Advice!")
-streamlit.text(fruityvice_response.json())
-
+   fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+#  streamlit.write("The user entered ", fruit_choice)
+   if not fruit_choice:
+        streamlit.error("Please sleect a fruit to get information")
+    else:
+       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
 #This will Normalize and Flatten the JSON File  
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+      fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # This will display the data in a table
-streamlit.dataframe(fruityvice_normalized)
+      streamlit.dataframe(fruityvice_normalized)
+except URLError as e:
+   streamlit.error()
+    
+# API Call : Import Request 
+#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
+# streamlit.text(fruityvice_response)
+#
+#streamlit.header("Fruityvice Fruit Advice!")
+#streamlit.text(fruityvice_response.json())
+
+
+streamlit.stop()
 
 # Snowflake connection
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
@@ -52,7 +60,12 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.dataframe(my_data_rows)
 
+# Do not Run Past Here - Trouble shooting 
+streamlit.stop()
+
 # Add Fruit 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 #streamlit.write('The user entered ', fruit_choice)
 
+my_cur.execute("insert into fruit_load_list values ")
+insert into fruit_load_list values (add_my_fruit)
