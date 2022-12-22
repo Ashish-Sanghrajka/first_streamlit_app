@@ -26,7 +26,7 @@ streamlit.dataframe(fruits_to_show)
 # This will display the data in a table
 #  streamlit.write('The user entered ', fruit_choice)
 
-try:
+#try:
 # Fruityvice API
    fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 #   if not fruit_choice:
