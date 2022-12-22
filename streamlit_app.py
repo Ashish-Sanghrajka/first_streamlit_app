@@ -3,7 +3,6 @@ import pandas
 import snowflake.connector
 import requests
 
-
 streamlit.title('My Parents New Healthy Diner')
 streamlit.header('Breakfast Menu')
 streamlit.text('Kale Salad , Beet, cole Slaw')
@@ -21,54 +20,3 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
-# Do not Run Past Here - Trouble shooting 
-streamlit.stop()
-
-/*
-
-#This will Normalize and Flatten the JSON File  
-# This will display the data in a table
-#  streamlit.write('The user entered ', fruit_choice)
-
-#try:
-# Fruityvice API
-#   fruit_choice = streamlit.text_input('What fruit would you like information about?')
-#   if not fruit_choice:
-#        streamlit.error("Please select a fruit to get information")
-#   else:
-#      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
-#      fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-#      streamlit.dataframe(fruityvice_normalized)
-
-#except URLError as e:
-#   streamlit.error()
-    
-# API Call : Import Request 
-#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
-# streamlit.text(fruityvice_response)
-#
-#streamlit.header("Fruityvice Fruit Advice!")
-#streamlit.text(fruityvice_response.json())
-
-
-streamlit.stop()
-
-# Snowflake connection
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-# my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-# my_data_row = my_cur.fetchone()
-# streamlit.text("Hello from Snowflake:")
-
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
-streamlit.dataframe(my_data_rows)
-
-
-# Add Fruit 
-add_my_fruit = streamlit.text_input('What fruit would you like to add?')
-#streamlit.write('The user entered ', fruit_choice)
-
-my_cur.execute("insert into fruit_load_list values ")
-insert into fruit_load_list values (add_my_fruit)
-*/
