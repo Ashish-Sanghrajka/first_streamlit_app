@@ -24,8 +24,8 @@ streamlit.dataframe(fruits_to_show)
 # Do not Run Past Here - Trouble shooting 
 streamlit.stop()
 
+/*
 
-import requests
 #This will Normalize and Flatten the JSON File  
 # This will display the data in a table
 #  streamlit.write('The user entered ', fruit_choice)
