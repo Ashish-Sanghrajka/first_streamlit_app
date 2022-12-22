@@ -1,6 +1,5 @@
 import streamlit
 import pandas
-import requests
 import snowflake.connector
 
 streamlit.title('My Parents New Healthy Diner')
@@ -23,6 +22,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
+#import requests
 #This will Normalize and Flatten the JSON File  
 # This will display the data in a table
 #  streamlit.write('The user entered ', fruit_choice)
