@@ -27,7 +27,7 @@ try:
 
  if not fruit_choice:
        streamlit.error("Please select a fruit to get information")
- else
+ #else
      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
      #streamlit.text(fruityvice_response)
      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +  fruit_choice)
@@ -36,4 +36,3 @@ try:
 
    except URLError as e:
    streamlit.error()
-
