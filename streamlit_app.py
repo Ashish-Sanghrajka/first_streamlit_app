@@ -21,6 +21,13 @@ def insert_row_fruit_load_list(new_fruit):
          my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
          return  "Thanks for adding " + new_fruit
 
+# Function Insert row into  Snowflake
+def delete_row_fruit_load_list(delete_fruit):
+    with my_cnx.cursor() as my_cur:
+         my_cur.execute("Delete from fruit_load_list where fruit_name like ('" + delete_fruit + "')")
+         return  "Deleted from Table " + delete_fruit
+
+
 streamlit.title('My Parents New Healthy Diner')
 streamlit.header('Breakfast Menu')
 streamlit.text('Kale Salad , Beet, cole Slaw')
@@ -64,12 +71,19 @@ my_data_rows = get_fruit_load_list()
 streamlit.dataframe(my_data_rows)
 
 # Add Fruit 
-add_new_fruit = streamlit.text_input('What fruit would you like to add?')
-streamlit.write('The user entered ', add_new_fruit)
+input_fruit = streamlit.text_input('What fruit would you like to add?')
+streamlit.write('The user entered ', input_fruit)
 
 # Snowflake connection
 if streamlit.button('Add a Fruit to the List'):
 #   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-   back_from_function = insert_row_fruit_load_list(add_new_fruit)
+   back_from_function = insert_row_fruit_load_list(input_fruit)
    streamlit.text(back_from_function)
                         
+if streamlit.button('Delete  a Fruit to the List'):
+#   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   back_from_function = delete_row_fruit_load_list(input_fruit)
+   streamlit.text(back_from_function)
+
+       
+       
