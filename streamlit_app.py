@@ -69,6 +69,7 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 # Readinf from Snowflake Table 
 my_data_rows = get_fruit_load_list()
 streamlit.dataframe(my_data_rows)
+my_cnx.close()                        
 
 # Add Fruit 
 input_fruit = streamlit.text_input('What fruit would you like to add?')
@@ -76,14 +77,16 @@ streamlit.write('The user entered ', input_fruit)
 
 # Snowflake connection
 if streamlit.button('Add a Fruit to the List'):
-#   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
    back_from_function = insert_row_fruit_load_list(input_fruit)
    streamlit.text(back_from_function)
-                        
+   my_cnx.close()                        
+
 if streamlit.button('Delete  a Fruit to the List'):
-#   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
    back_from_function = delete_row_fruit_load_list(input_fruit)
    streamlit.text(back_from_function)
+   my_cnx.close()                        
 
        
        
