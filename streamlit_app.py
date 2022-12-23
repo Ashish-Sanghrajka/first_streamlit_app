@@ -48,9 +48,9 @@ except URLError as e:
 # Snowflake connection
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 
-
+#Verify Snowflake Connection
 #my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+#my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 #my_data_row = my_cur.fetchone()
 #streamlit.text("Hello from Snowflake:")
 #streamlit.text(my_data_row)
@@ -62,5 +62,4 @@ streamlit.dataframe(my_data_rows)
 # Add Fruit 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 streamlit.write('The user entered ', add_my_fruit)
-
 
